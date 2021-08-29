@@ -2,6 +2,8 @@
 
 namespace WireUi\View\Components;
 
+use Illuminate\Contracts\View\View;
+
 class Select extends NativeSelect
 {
     public string $rightIcon;
@@ -46,8 +48,8 @@ class Select extends NativeSelect
         $this->icon            = $icon;
     }
 
-    protected function getView(): string
+    public function render(): View
     {
-        return 'wireui::components.select';
+        return view('wireui::components.select');
     }
 }

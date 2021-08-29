@@ -2,6 +2,8 @@
 
 namespace WireUi\View\Components;
 
+use Illuminate\Contracts\View\View;
+
 class NativeSelect extends FormComponent
 {
     public ?string $label;
@@ -38,9 +40,9 @@ class NativeSelect extends FormComponent
         $this->options        = $options;
     }
 
-    protected function getView(): string
+    public function render(): View
     {
-        return 'wireui::components.native-select';
+        return view('wireui::components.native-select');
     }
 
     public function defaultClasses(): string

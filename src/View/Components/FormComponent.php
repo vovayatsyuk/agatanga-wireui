@@ -4,37 +4,32 @@ namespace WireUi\View\Components;
 
 abstract class FormComponent extends Component
 {
-    public function render()
+    protected $sharedAttributes = [
+        'id',
+        'name',
+        'disabled' => false,
+        'readonly' => false,
+    ];
+
+    public function withAttributes(array $attributes)
     {
-        return function (array $data) {
-            return view($this->getView(), $this->mergeAttributes($data))->render();
-        };
+        parent::withAttributes($attributes);
+
+        return $this->fillWireModel();
     }
 
-    abstract protected function getView(): string;
-
-    protected function sharedAttributes(): array
+    protected function fillWireModel(): self
     {
-        return ['id', 'name', 'disabled', 'readonly'];
-    }
+        $model = $this->attributes->wire('model')->value();
 
-    protected function mergeAttributes(array $data): array
-    {
-        $attributes = $data['attributes'];
-        $model      = $attributes->wire('model')->value();
-
-        if (!$attributes->has('name') && $model) {
-            $attributes->offsetSet('name', $model);
+        if (!$this->attributes->has('name') && $model) {
+            $this->attributes->offsetSet('name', $model);
         }
 
-        if (!$attributes->has('id') && $model) {
-            $attributes->offsetSet('id', md5($model));
+        if (!$this->attributes->has('id') && $model) {
+            $this->attributes->offsetSet('id', md5($model));
         }
 
-        foreach ($this->sharedAttributes() as $attribute) {
-            $data[$attribute] = $attributes->get($attribute);
-        }
-
-        return $data;
+        return $this;
     }
 }

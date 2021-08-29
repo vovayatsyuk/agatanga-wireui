@@ -2,6 +2,7 @@
 
 namespace WireUi\View\Components;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\{Str, Stringable};
 
 class Input extends FormComponent
@@ -54,9 +55,9 @@ class Input extends FormComponent
         $this->append     = $append;
     }
 
-    protected function getView(): string
+    public function render(): View
     {
-        return 'wireui::components.input';
+        return view('wireui::components.input');
     }
 
     public function getInputClasses(bool $hasError = false): string

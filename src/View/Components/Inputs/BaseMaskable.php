@@ -3,6 +3,7 @@
 namespace WireUi\View\Components\Inputs;
 
 use Exception;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;
 use WireUi\View\Components\Input;
 
@@ -37,9 +38,9 @@ abstract class BaseMaskable extends Input
         $this->emitFormatted = $emitFormatted;
     }
 
-    protected function getView(): string
+    public function render(): View
     {
-        return 'wireui::components.inputs.maskable';
+        return view('wireui::components.inputs.maskable');
     }
 
     private function formatMask(string $mask): string

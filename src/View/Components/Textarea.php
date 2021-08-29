@@ -2,10 +2,12 @@
 
 namespace WireUi\View\Components;
 
+use Illuminate\Contracts\View\View;
+
 class Textarea extends Input
 {
-    protected function getView(): string
+    public function render(): View
     {
-        return 'wireui::components.textarea';
+        return view('wireui::components.textarea');
     }
 }

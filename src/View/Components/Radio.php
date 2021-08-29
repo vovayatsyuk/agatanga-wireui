@@ -2,10 +2,12 @@
 
 namespace WireUi\View\Components;
 
+use Illuminate\Contracts\View\View;
+
 class Radio extends Checkbox
 {
-    protected function getView(): string
+    public function render(): View
     {
-        return 'wireui::components.radio';
+        return view('wireui::components.radio');
     }
 }

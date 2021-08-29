@@ -2,13 +2,14 @@
 
 namespace WireUi\View\Components;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\{Str, Stringable};
 
 class Toggle extends Checkbox
 {
-    protected function getView(): string
+    public function render(): View
     {
-        return 'wireui::components.toggle';
+        return view('wireui::components.toggle');
     }
 
     public function backgroundClasses(bool $hasError): string

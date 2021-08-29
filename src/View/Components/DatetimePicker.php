@@ -2,6 +2,8 @@
 
 namespace WireUi\View\Components;
 
+use Illuminate\Contracts\View\View;
+
 class DatetimePicker extends Input
 {
     public bool $withoutTips;
@@ -55,8 +57,8 @@ class DatetimePicker extends Input
         $this->displayFormat   = $displayFormat;
     }
 
-    protected function getView(): string
+    public function render(): View
     {
-        return 'wireui::components.datetime-picker';
+        return view('wireui::components.datetime-picker');
     }
 }

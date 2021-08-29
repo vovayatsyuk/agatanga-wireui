@@ -2,6 +2,7 @@
 
 namespace WireUi\View\Components\Inputs;
 
+use Illuminate\Contracts\View\View;
 use WireUi\View\Components\Input;
 
 class CurrencyInput extends Input
@@ -39,8 +40,8 @@ class CurrencyInput extends Input
         $this->emitFormatted = $emitFormatted;
     }
 
-    protected function getView(): string
+    public function render(): View
     {
-        return 'wireui::components.inputs.currency';
+        return view('wireui::components.inputs.currency');
     }
 }

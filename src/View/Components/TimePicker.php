@@ -2,6 +2,8 @@
 
 namespace WireUi\View\Components;
 
+use Illuminate\Contracts\View\View;
+
 class TimePicker extends Input
 {
     public const INTERVAL       = 10;
@@ -31,8 +33,8 @@ class TimePicker extends Input
         $this->format   = $format;
     }
 
-    protected function getView(): string
+    public function render(): View
     {
-        return 'wireui::components.time-picker';
+        return view('wireui::components.time-picker');
     }
 }

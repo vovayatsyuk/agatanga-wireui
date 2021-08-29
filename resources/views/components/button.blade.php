@@ -1,6 +1,6 @@
 <button {{ $attributes->merge([
-    'class' => $classes,
-    'type'  => 'button'
+    'class' => $classes(),
+    'type'  => 'button',
 ]) }}
 wire:loading.attr="disabled">
     @if ($icon)

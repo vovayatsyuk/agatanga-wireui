@@ -2,6 +2,7 @@
 
 namespace WireUi\View\Components;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\{Str, Stringable};
 
 class Checkbox extends FormComponent
@@ -29,9 +30,9 @@ class Checkbox extends FormComponent
         $this->leftLabel = $leftLabel;
     }
 
-    protected function getView(): string
+    public function render(): View
     {
-        return 'wireui::components.checkbox';
+        return view('wireui::components.checkbox');
     }
 
     public function getClasses(bool $hasError): string
@@ -59,6 +60,9 @@ class Checkbox extends FormComponent
 
     private function getSize(): string
     {
-        return $this->classes(['w-5 h-5' => $this->md, 'w-6 h-6' => $this->lg, ]);
+        return $this->classes([
+            'w-5 h-5' => $this->md,
+            'w-6 h-6' => $this->lg
+        ]);
     }
 }

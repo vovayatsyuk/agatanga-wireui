@@ -2,6 +2,7 @@
 
 namespace WireUi\View\Components;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
 abstract class BaseButton extends Component
@@ -90,23 +91,12 @@ abstract class BaseButton extends Component
         $this->spinner   = $spinner;
     }
 
-    public function render()
+    public function render(): View
     {
-        return function (array $data) {
-            return view('wireui::components.button', $this->mergeData($data))->render();
-        };
+        return view('wireui::components.button');
     }
 
-    protected function mergeData(array $data): array
-    {
-        $attributes       = $data['attributes'];
-        $data['disabled'] = (bool)$attributes->get('disabled');
-        $data['classes']  = $this->getClasses();
-
-        return $data;
-    }
-
-    protected function getClasses(): string
+    public function classes(): string
     {
         $rounded = $this->squared ? '' : ($this->rounded ? 'rounded-full' : 'rounded-md');
         $size    = $this->getSize();
