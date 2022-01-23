@@ -9,4 +9,7 @@ return [
         'today'     => 'Dnes',
         'yesterday' => 'Včera',
     ],
+    'errors' => [
+        'title' => 'test',
+    ],
 ];
